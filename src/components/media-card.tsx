@@ -1,4 +1,5 @@
 import type { MediaItem } from '../types/media-item'
+import { MediaTypeBadge } from './media-type-badge'
 
 type MediaCardProps = {
   data: MediaItem
@@ -6,8 +7,6 @@ type MediaCardProps = {
 
 export function MediaCard(props: MediaCardProps) {
   const { data } = props
-  const mediaTypeLabel = data.mediaType === 'movie' ? 'Película' : 'Serie'
-
   return (
     <article className="media-card">
       {data.posterUrl ? (
@@ -22,7 +21,7 @@ export function MediaCard(props: MediaCardProps) {
 
       <div>
         <p className="media-card__meta">
-          {mediaTypeLabel} · {data.releaseDate}
+          <MediaTypeBadge mediaType={data.mediaType} /> · {data.releaseDate}
         </p>
         <h3>{data.title}</h3>
         <p>{data.description ?? 'Sin descripción disponible'}</p>
