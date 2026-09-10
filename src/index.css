@@ -175,3 +175,31 @@ body {
   outline: 2px solid #d9be74;
   outline-offset: 2px;
 }
+
+.media-detail-content img {
+  display: block;
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  border-radius: 10px;
+}
+
+.detail-button {
+  padding: 10px 16px;
+  border: 1px solid #565349;
+  border-radius: 10px;
+  background: #20201b;
+  color: #f5f1e8;
+  font: inherit;
+  cursor: pointer;
+}
+
+.detail-button:focus-visible {
+  outline: 2px solid #d9be74;
+  outline-offset: 2px;
+}
+
+.selection-preview {
+  margin-bottom: 24px;
+}
