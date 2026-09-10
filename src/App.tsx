@@ -1,7 +1,9 @@
+import { Modal } from '@mantine/core'
 import { useState } from 'react'
 
 import { AppHeader } from './components/app-header'
 import { EmptyState } from './components/empty-state'
+import { MediaDetailContent } from './components/media-detail-content'
 import { MediaGrid } from './components/media-grid'
 import {
   MediaTypeFilter,
@@ -86,12 +88,6 @@ function App() {
             </button>
           </div>
         ) : null}
-        <p>
-          Selección: {selectedMedia?.title ?? 'Ninguna'} · Apertura: {String(isDetailOpened)}
-        </p>
-        <button className="detail-button" type="button" onClick={handleCloseDetail}>
-          Limpiar selección
-        </button>
         {hasNoResults ? (
           <EmptyState
             title="Sin resultados"
@@ -101,6 +97,17 @@ function App() {
           <MediaGrid items={visibleMedia} />
         )}
       </main>
+      <Modal
+        opened={isDetailOpened}
+        onClose={handleCloseDetail}
+        title={selectedMedia?.title ?? 'Detalle'}
+        closeButtonProps={{ 'aria-label': 'Cerrar detalle' }}
+        centered
+      >
+        {selectedMedia !== null ? (
+          <MediaDetailContent media={selectedMedia} />
+        ) : null}
+      </Modal>
     </>
   )
 }

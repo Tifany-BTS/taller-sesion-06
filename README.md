@@ -2,9 +2,9 @@
 
 Paquete `medialog-bootcamp`. Node >=22.22.0, pnpm 11.17.0.
 
-## Sesión 06 · session-06-step-02-selection
+## Sesión 06 · session-06-step-03-modal-preview
 
-Id seleccionado, objeto y apertura derivados. Trigger temporal y diagnóstico permiten comprobar selección y limpiar sin modal.
+Modal desde Probar detalle, contenido y cierres. Sin onSelect ni Ver detalle en Grid/Card; punto anterior al taller.
 
 ```bash
 pnpm install --frozen-lockfile
