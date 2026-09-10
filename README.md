@@ -2,9 +2,9 @@
 
 Paquete `medialog-bootcamp`. Node >=22.22.0 y pnpm 11.17.0.
 
-## Sesión 05 · S05-B04 · Segundo estado conectado
+## Sesión 05 · S05-B05 · Filtros combinados
 
-App mantiene query y mediaTypeFilter. Al pulsar cambia el botón activo; todavía solo filtra el texto. No se guarda estado dentro de MediaTypeFilter.
+El único filter exige matchesQuery y matchesType. bear con Películas da cero. El mensaje conserva todavía el texto de búsqueda de 04; la próxima etapa amplía su causa.
 
 ```bash
 pnpm install --frozen-lockfile

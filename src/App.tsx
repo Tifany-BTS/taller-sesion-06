@@ -16,9 +16,13 @@ function App() {
     useState<MediaTypeFilterValue>('all')
 
   const normalizedQuery = query.trim().toLowerCase()
-  const visibleMedia = mediaItems.filter((media) =>
-    media.title.toLowerCase().includes(normalizedQuery),
-  )
+  const visibleMedia = mediaItems.filter((media) => {
+    const matchesQuery = media.title.toLowerCase().includes(normalizedQuery)
+    const matchesType =
+      mediaTypeFilter === 'all' || media.mediaType === mediaTypeFilter
+
+    return matchesQuery && matchesType
+  })
 
   const hasNoResults =
     mediaItems.length > 0 &&
