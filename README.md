@@ -2,9 +2,9 @@
 
 Paquete `medialog-bootcamp`. Node >=22.22.0, pnpm 11.17.0.
 
-## Sesión 06 · Configuración
+## Sesión 06 · session-06-step-02-selection
 
-Mantine y PostCSS instalados en versiones fijadas; provider y estilos conectados. defaultColorScheme dark conserva la paleta. Todavía no hay selección ni modal.
+Id seleccionado, objeto y apertura derivados. Trigger temporal y diagnóstico permiten comprobar selección y limpiar sin modal.
 
 ```bash
 pnpm install --frozen-lockfile

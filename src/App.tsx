@@ -15,6 +15,21 @@ function App() {
   const [mediaTypeFilter, setMediaTypeFilter] =
     useState<MediaTypeFilterValue>('all')
 
+  const [selectedMediaId, setSelectedMediaId] = useState<number | null>(null)
+
+  const selectedMedia =
+    mediaItems.find((media) => media.id === selectedMediaId) ?? null
+  const isDetailOpened = selectedMedia !== null
+  const previewMedia = mediaItems[0] ?? null
+
+  function handleSelectMedia(mediaId: number) {
+    setSelectedMediaId(mediaId)
+  }
+
+  function handleCloseDetail() {
+    setSelectedMediaId(null)
+  }
+
   const normalizedQuery = query.trim().toLowerCase()
   const visibleMedia = mediaItems.filter((media) => {
     const matchesQuery = media.title.toLowerCase().includes(normalizedQuery)
@@ -60,6 +75,23 @@ function App() {
             Limpiar filtros
           </button>
         </div>
+        {previewMedia !== null ? (
+          <div className="selection-preview">
+            <button
+              className="detail-button"
+              type="button"
+              onClick={() => handleSelectMedia(previewMedia.id)}
+            >
+              Probar detalle
+            </button>
+          </div>
+        ) : null}
+        <p>
+          Selección: {selectedMedia?.title ?? 'Ninguna'} · Apertura: {String(isDetailOpened)}
+        </p>
+        <button className="detail-button" type="button" onClick={handleCloseDetail}>
+          Limpiar selección
+        </button>
         {hasNoResults ? (
           <EmptyState
             title="Sin resultados"
