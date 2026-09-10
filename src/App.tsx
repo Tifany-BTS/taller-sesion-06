@@ -32,6 +32,13 @@ function App() {
     hasActiveFilters &&
     visibleMedia.length === 0
 
+  const resultCount = visibleMedia.length
+
+  function handleClearFilters() {
+    setQuery('')
+    setMediaTypeFilter('all')
+  }
+
   return (
     <>
       <AppHeader />
@@ -43,6 +50,16 @@ function App() {
           value={mediaTypeFilter}
           onFilterChange={setMediaTypeFilter}
         />
+        <div className="filter-summary">
+          <p>Mostrando {resultCount} de {mediaItems.length}</p>
+          <button
+            type="button"
+            onClick={handleClearFilters}
+            disabled={!hasActiveFilters}
+          >
+            Limpiar filtros
+          </button>
+        </div>
         {hasNoResults ? (
           <EmptyState
             title="Sin resultados"
