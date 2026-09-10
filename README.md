@@ -2,9 +2,9 @@
 
 Paquete `medialog-bootcamp`. Node >=22.22.0 y pnpm 11.17.0.
 
-## Sesión 05 · S05-B03 · Control definido
+## Sesión 05 · S05-B04 · Segundo estado conectado
 
-MediaTypeFilter define su contrato, opciones y botones; todavía no está importado en App. El catálogo sigue como en 04. El CSS del control ya está preparado. Sigue S05-B04 para conectar la fuente de verdad.
+App mantiene query y mediaTypeFilter. Al pulsar cambia el botón activo; todavía solo filtra el texto. No se guarda estado dentro de MediaTypeFilter.
 
 ```bash
 pnpm install --frozen-lockfile

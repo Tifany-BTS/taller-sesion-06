@@ -3,11 +3,17 @@ import { useState } from 'react'
 import { AppHeader } from './components/app-header'
 import { EmptyState } from './components/empty-state'
 import { MediaGrid } from './components/media-grid'
+import {
+  MediaTypeFilter,
+  type MediaTypeFilterValue,
+} from './components/media-type-filter'
 import { SearchInput } from './components/search-input'
 import { mediaItems } from './data/media-items'
 
 function App() {
   const [query, setQuery] = useState('')
+  const [mediaTypeFilter, setMediaTypeFilter] =
+    useState<MediaTypeFilterValue>('all')
 
   const normalizedQuery = query.trim().toLowerCase()
   const visibleMedia = mediaItems.filter((media) =>
@@ -26,6 +32,10 @@ function App() {
       <main className="page-container">
         <h2>Catálogo destacado</h2>
         <SearchInput value={query} onQueryChange={setQuery} />
+        <MediaTypeFilter
+          value={mediaTypeFilter}
+          onFilterChange={setMediaTypeFilter}
+        />
         {hasNoResults ? (
           <EmptyState
             title="Sin resultados"
