@@ -7,6 +7,11 @@ import { mediaItems } from './data/media-items'
 function App() {
   const [query, setQuery] = useState('')
 
+  const normalizedQuery = query.trim().toLowerCase()
+  const visibleMedia = mediaItems.filter((media) =>
+    media.title.toLowerCase().includes(normalizedQuery),
+  )
+
   return (
     <>
       <AppHeader />
@@ -22,7 +27,7 @@ function App() {
           />
         </label>
         <p>Consulta actual: {query}</p>
-        <MediaGrid items={mediaItems} />
+        <MediaGrid items={visibleMedia} />
       </main>
     </>
   )
