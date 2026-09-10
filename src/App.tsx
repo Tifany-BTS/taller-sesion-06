@@ -24,9 +24,12 @@ function App() {
     return matchesQuery && matchesType
   })
 
+  const hasActiveFilters =
+    normalizedQuery.length > 0 || mediaTypeFilter !== 'all'
+
   const hasNoResults =
     mediaItems.length > 0 &&
-    normalizedQuery.length > 0 &&
+    hasActiveFilters &&
     visibleMedia.length === 0
 
   return (
@@ -43,7 +46,7 @@ function App() {
         {hasNoResults ? (
           <EmptyState
             title="Sin resultados"
-            description="No encontramos medios que coincidan con tu búsqueda."
+            description="No encontramos medios que coincidan con tus filtros."
           />
         ) : (
           <MediaGrid items={visibleMedia} />

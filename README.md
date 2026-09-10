@@ -2,9 +2,9 @@
 
 Paquete `medialog-bootcamp`. Node >=22.22.0 y pnpm 11.17.0.
 
-## Sesión 05 · S05-B05 · Filtros combinados
+## Sesión 05 · S05-B06 · Vacíos por causa
 
-El único filter exige matchesQuery y matchesType. bear con Películas da cero. El mensaje conserva todavía el texto de búsqueda de 04; la próxima etapa amplía su causa.
+hasActiveFilters considera texto efectivo o tipo. Una fuente vacía mantiene Catálogo vacío. Contador y limpieza quedan para la práctica, aún sin solución.
 
 ```bash
 pnpm install --frozen-lockfile
