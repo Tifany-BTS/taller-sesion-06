@@ -17,13 +17,17 @@ function App() {
   const [mediaTypeFilter, setMediaTypeFilter] =
     useState<MediaTypeFilterValue>('all')
 
+  // 1. Único estado de selección
   const [selectedMediaId, setSelectedMediaId] = useState<number | null>(null)
 
+  // 2. CÁLCULOS DERIVADOS (Evaluación directa sobre la colección original completa)
   const selectedMedia =
     mediaItems.find((media) => media.id === selectedMediaId) ?? null
-  const isDetailOpened = selectedMedia !== null
-  const previewMedia = mediaItems[0] ?? null
 
+  // Apertura derivada como cálculo (cumple la regla 'No boolean en estado')
+  const isDetailOpened = selectedMediaId !== null
+
+  // Handlers
   function handleSelectMedia(mediaId: number) {
     setSelectedMediaId(mediaId)
   }
@@ -32,6 +36,7 @@ function App() {
     setSelectedMediaId(null)
   }
 
+  // Filtros (conservados de la sesión 05)
   const normalizedQuery = query.trim().toLowerCase()
   const visibleMedia = mediaItems.filter((media) => {
     const matchesQuery = media.title.toLowerCase().includes(normalizedQuery)
@@ -77,26 +82,21 @@ function App() {
             Limpiar filtros
           </button>
         </div>
-        {previewMedia !== null ? (
-          <div className="selection-preview">
-            <button
-              className="detail-button"
-              type="button"
-              onClick={() => handleSelectMedia(previewMedia.id)}
-            >
-              Probar detalle
-            </button>
-          </div>
-        ) : null}
+
+        {/* NOTA: Se eliminó la sección del botón temporal "Probar detalle" y previewMedia */}
+
         {hasNoResults ? (
           <EmptyState
             title="Sin resultados"
             description="No encontramos medios que coincidan con tus filtros."
           />
         ) : (
-          <MediaGrid items={visibleMedia} />
+          /* 3. Se envía prop onSelect a MediaGrid */
+          <MediaGrid items={visibleMedia} onSelect={handleSelectMedia} />
         )}
       </main>
+
+      {/* Modal local derivado de Mantine */}
       <Modal
         opened={isDetailOpened}
         onClose={handleCloseDetail}

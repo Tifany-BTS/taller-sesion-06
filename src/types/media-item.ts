@@ -8,3 +8,5 @@ export type MediaItem = {
   releaseDate: string
   posterUrl: string | null
 }
+
+
